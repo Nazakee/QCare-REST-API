@@ -1,0 +1,81 @@
+{
+  "info": {
+    "name": "QCare REST API",
+    "description": "Enam endpoint CRUD dan pencarian data antrean QCare.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    },
+    {
+      "key": "id",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "POST - Tambah antrean",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nama_pasien\": \"Ahmad Fauzi\",\n  \"nama_fasilitas\": \"Puskesmas Sehat\",\n  \"jenis_layanan\": \"Pemeriksaan Umum\",\n  \"kategori_pasien\": \"Umum\",\n  \"kebutuhan_khusus\": null,\n  \"nomor_antrean\": \"A001\",\n  \"status_antrean\": \"Menunggu\"\n}"
+        },
+        "url": "{{baseUrl}}/api/antrean"
+      }
+    },
+    {
+      "name": "GET - Semua antrean",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/antrean"
+      }
+    },
+    {
+      "name": "GET - Antrean berdasarkan ID",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/antrean/{{id}}"
+      }
+    },
+    {
+      "name": "GET - Cari berdasarkan nama pasien",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/antrean/nama/Ahmad"
+      }
+    },
+    {
+      "name": "PUT - Perbarui antrean",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status_antrean\": \"Dipanggil\"\n}"
+        },
+        "url": "{{baseUrl}}/api/antrean/{{id}}"
+      }
+    },
+    {
+      "name": "DELETE - Hapus antrean",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/antrean/{{id}}"
+      }
+    }
+  ]
+}
